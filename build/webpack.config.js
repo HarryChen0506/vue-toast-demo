@@ -15,7 +15,7 @@ module.exports = {
     entry: {
         app: [
             'webpack-hot-middleware/client?path=/__what&timeout=2000&overlay=false&reload=true',
-            path.join(__dirname,'../app/main.js')
+            path.join(__dirname,'../src/main.js')
         ]
     }, 
     output: {
@@ -58,18 +58,12 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $:"jquery",
-            jQuery:"jquery",
-            "window.jQuery":"jquery"
-        }),
         new CleanWebpackPlugin(['public'],{
             root: path.join(__dirname,"../"),
             verbose: true,
             dry: false
         }),
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoErrorsPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(__dirname ,"../index.html") //new 一个这个插件的实例，并传入相关的参数
         })

@@ -14,13 +14,13 @@ function assetsPath(_path) {
 }
 
 module.exports = {
-    entry: path.join(__dirname,'../app/main.js'),
+    entry: path.join(__dirname,'../src/main.js'),
     output: {
         path: config.build.assetsRoot,
         publicPath: process.env.NODE_ENV === 'production'
                     ? config.build.assetsPublicPath
                     : config.dev.assetsPublicPath,        
-        filename: assetsPath('bundle-[hash].js'),   //utils.assetsPath('js/[name].[chunkhash].js')
+        filename: assetsPath('vue-toast-demo.js'),   //utils.assetsPath('js/[name].[chunkhash].js')
     },
     devtool: 'eval-source-map',
     module: {
@@ -31,29 +31,18 @@ module.exports = {
                 exclude: /node_modules/
             },{
                 test: /\.css$/,
-                // use: [
-                //     {
-                //         loader: "style-loader"
-                //     },{
-                //         loader: 'css-loader',
-                //         options: {
-                //             modules: false
-                //         }
-                //     },{
-                //         loader: 'postcss-loader'
-                //     }
-                // ]
-                use: ExtractTextPlugin.extract({
-                    use:[{
+                use: [
+                    {
+                        loader: "style-loader"
+                    },{
                         loader: 'css-loader',
                         options: {
-                            modules: false,
-                        }                            
+                            modules: false
+                        }
                     },{
                         loader: 'postcss-loader'
-                    }],
-                    fallback: 'style-loader',
-                })
+                    }
+                ]                
             },{
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
@@ -65,11 +54,6 @@ module.exports = {
         ]
     },
     plugins: [
-        new webpack.ProvidePlugin({
-            $:"jquery",
-            jQuery:"jquery",
-            "window.jQuery":"jquery"
-        }),
         new CleanWebpackPlugin(['dist'],{
             root: path.join(__dirname,"../"),
             verbose: true,
@@ -79,9 +63,6 @@ module.exports = {
             template: path.join(__dirname ,"../index.html")  //new 一个这个插件的实例，并传入相关的参数
         }),
         new webpack.optimize.OccurrenceOrderPlugin(),
-        new webpack.optimize.UglifyJsPlugin(),
-        new ExtractTextPlugin({
-            filename: assetsPath('css/[name].[contenthash].css')
-        }),    
+        new webpack.optimize.UglifyJsPlugin()
     ]
 }
