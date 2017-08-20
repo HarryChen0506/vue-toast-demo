@@ -19,7 +19,7 @@ Toast.install = function (Vue, opts){
         }
         // 逻辑...
         let toastConstructor = Vue.extend(VueToast);  //1、创建构造器，定义好提示信息的模板
-        let toastComponent = new toastConstructor(); //创建实例，并挂在到虚拟dom里        
+        let toastComponent = new toastConstructor(); //创建实例，.$mount().$el并挂在到虚拟dom里        
         toastComponent.msg = options.msg;
         toastComponent.position = options.position;
         toastComponent.zIndex = options.zIndex;
@@ -27,13 +27,16 @@ Toast.install = function (Vue, opts){
 
         document.body.appendChild(toastComponent.$mount().$el);
 
-        setTimeout(function(){
+        setTimeout(function(){           
+            document.body.removeChild(toastComponent.$mount().$el);
             if(options.callback && typeof options.callback == 'function'){
                 options.callback();
             }
-            // document.body.removeChild(toastComponent.$mount().$el)
         },options.duration);
 
+    }
+    Vue.prototype.$toast.show = function (methodOpts){
+        Vue.prototype.$toast(methodOpts);
     }
 }
 

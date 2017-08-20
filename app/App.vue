@@ -24,7 +24,7 @@ export default {
           this.flag = true
       },
       tap: function (){
-          this.$toast({
+          this.$toast.show({
               msg: '好开心，第一个提示框',
               duration: 1000,
               position: 'bottom',

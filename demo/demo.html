@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue-toast-demo 插件demo</title>
+</head>
+<script src="../node_modules/vue/dist/vue.js"></script>
+<script src="../dist/vue-toast-plugin.min.js"></script>
+<body>
+    <div>demo演示</div>
+    <div id="app">
+        <div>{{msg}}</div>
+        <button @click="tap()">点击</button>
+    </div>
+
+<script>
+var app = new Vue({
+    el: '#app',
+    data: {
+        msg: '1234'
+    },
+    methods: {
+        tap: function (){
+            console.log(123);
+            this.$toast.show({
+                msg: 'demo，实现一个提示框',
+                duration: 1000,
+                position: 'bottom',
+                zIndex: 1000,
+                callback: function (){
+                    alert('恭喜你，成功了')
+                }
+            });
+        }
+    }
+})
+
+</script>
+</body>
+</html>

@@ -14,13 +14,13 @@ function assetsPath(_path) {
 }
 
 module.exports = {
-    entry: path.join(__dirname,'../app/main.js'),
+    entry: path.join(__dirname,'../app/vue-toast-plugin.js'),
     output: {
         path: config.build.assetsRoot,
         publicPath: process.env.NODE_ENV === 'production'
                     ? config.build.assetsPublicPath
                     : config.dev.assetsPublicPath,        
-        filename: assetsPath('vue-toast-demo.js'),   //utils.assetsPath('js/[name].[chunkhash].js')
+        filename: assetsPath('vue-toast-plugin.min.js'),   //utils.assetsPath('js/[name].[chunkhash].js')
     },
     devtool: 'eval-source-map',
     module: {
@@ -69,9 +69,9 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new HtmlWebpackPlugin({
-            template: path.join(__dirname ,"../index.html")  //new 一个这个插件的实例，并传入相关的参数
-        }),
+        // new HtmlWebpackPlugin({
+        //     template: path.join(__dirname ,"../index.html")  //new 一个这个插件的实例，并传入相关的参数
+        // }),
         new webpack.optimize.OccurrenceOrderPlugin(),
         new webpack.optimize.UglifyJsPlugin()
     ]
