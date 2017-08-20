@@ -22,12 +22,7 @@ module.exports = {
         publicPath: process.env.NODE_ENV === 'production'
                     ? config.build.assetsPublicPath
                     : config.dev.assetsPublicPath,   
-    },
-    resolve: {
-        alias: {
-            'vue': 'vue/dist/vue.js'
-        }
-    },
+    },    
     resolve: {
         extensions: ['.js', '.vue', '.json'],
         alias: {

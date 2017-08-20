@@ -1,17 +1,14 @@
 
 <template>
-  <div id="app">   
-      
-      <div @click="show()">显示toast</div>
-      <div v-if="flag">
-          <!--<vue-toast></vue-toast>-->
-      </div>
+  <div id="app">         
+      <!--<div @click="show()">显示toast提示</div>-->
       <div @click="tap()">点击</div>
+      <div>hhhahh</div>
   </div>
 </template>
 
 <script>
-import VueToast from './vue-toast.vue'
+// import VueToast from './vue-toast.vue'
 export default {
   name: 'app',
   data: function (){
@@ -24,24 +21,23 @@ export default {
           this.flag = true
       },
       tap: function (){
+          console.log(123);
           this.$toast.show({
               msg: '好开心，第一个提示框',
-              duration: 1000,
+              duration: 10000,
               position: 'bottom',
-              zIndex: 1000,
+              zIndex: 3000,
               callback: function (){
-                  alert('回调函数')
+                //   alert('回调函数')
+                console.log('回调函数')
               }
           });
       }
-  },
-  components: {
-      VueToast
   }
 }
 </script> 
 
-<style>
+<!--<style>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -50,4 +46,4 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-</style>
+</style>-->
