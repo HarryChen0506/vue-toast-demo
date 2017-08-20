@@ -14,7 +14,7 @@ function assetsPath(_path) {
 }
 
 module.exports = {
-    entry: path.join(__dirname,'../src/main.js'),
+    entry: path.join(__dirname,'../app/main.js'),
     output: {
         path: config.build.assetsRoot,
         publicPath: process.env.NODE_ENV === 'production'
@@ -25,6 +25,16 @@ module.exports = {
     devtool: 'eval-source-map',
     module: {
         rules: [
+             {
+                test: /\.vue$/,
+                loader: 'vue-loader', 
+                exclude:/node_modules/,
+                options:{
+                    loaders:{
+                        scss:'style-loader!css-loader!postcss-loader'
+                    }
+                }
+            },
             {
                 test: /\.js$/,
                 loader: 'babel-loader',

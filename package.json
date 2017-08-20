@@ -2,7 +2,7 @@
   "name": "vue-toast-demo",
   "version": "1.0.0",
   "description": "vue plugin for toast",
-  "main": "index.js", 
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node ./build/dev-server.js",
@@ -30,9 +30,15 @@
     "rimraf": "^2.6.1",
     "style-loader": "^0.18.2",
     "url-loader": "^0.5.9",
+    "vue-loader": "^13.0.4",
+    "vue-style-loader": "^3.0.1",
+    "vue-template-compiler": "^2.4.2",
     "webpack": "^3.5.5",
     "webpack-dev-middleware": "^1.12.0",
     "webpack-dev-server": "^2.7.1",
     "webpack-hot-middleware": "^2.18.2"
+  },
+  "dependencies": {
+    "vue": "^2.4.2"
   }
 }

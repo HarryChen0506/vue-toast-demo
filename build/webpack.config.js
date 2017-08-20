@@ -10,14 +10,12 @@ function assetsPath(_path) {
     : config.dev.assetsSubDirectory
   return path.posix.join(assetsSubDirectory, _path)
 }
+function resolve (dir) {
+  return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
-    entry: {
-        app: [
-            'webpack-hot-middleware/client?path=/__what&timeout=2000&overlay=false&reload=true',
-            path.join(__dirname,'../src/main.js')
-        ]
-    }, 
+    entry: path.join(__dirname,'../app/main.js'), 
     output: {
         path:  config.dev.assetsRoot,
         filename: 'bundle.js',
@@ -25,10 +23,31 @@ module.exports = {
                     ? config.build.assetsPublicPath
                     : config.dev.assetsPublicPath,   
     },
-    devtool: '#cheap-module-eval-source-map',
+    resolve: {
+        alias: {
+            'vue': 'vue/dist/vue.js'
+        }
+    },
+    resolve: {
+        extensions: ['.js', '.vue', '.json'],
+        alias: {
+            'vue$': 'vue/dist/vue.esm.js',
+            '@': resolve('src')
+        }
+    },
+    devtool: '#eval-source-map',
     module: {
         rules: [
-            {
+             {
+                test: /\.vue$/,
+                loader: 'vue-loader', 
+                exclude:path.join(__dirname,'../node_modules/'),
+                options:{
+                    loaders:{
+                        scss:'style-loader!css-loader!postcss-loader'
+                    }
+                }
+            },{
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
@@ -63,7 +82,6 @@ module.exports = {
             verbose: true,
             dry: false
         }),
-        new webpack.HotModuleReplacementPlugin(),
         new HtmlWebpackPlugin({
             template: path.join(__dirname ,"../index.html") //new 一个这个插件的实例，并传入相关的参数
         })
