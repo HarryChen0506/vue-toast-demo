@@ -24,7 +24,7 @@ export default {
           console.log(123);
           this.$toast.show({
               msg: '好开心，第一个提示框',
-              duration: 10000,
+              duration: 3000,
               position: 'bottom',
               zIndex: 3000,
               callback: function (){
@@ -37,13 +37,13 @@ export default {
 }
 </script> 
 
-<!--<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>-->
+    <!-- <style lang="scss">
+        #app {
+        font-family: 'Avenir', Helvetica, Arial, sans-serif;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-align: center;
+        color: #2c3e50;
+        margin-top: 60px;
+        }
+    </style> -->

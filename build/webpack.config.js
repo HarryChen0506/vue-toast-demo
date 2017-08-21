@@ -46,22 +46,24 @@ module.exports = {
                 test: /\.js$/,
                 loader: 'babel-loader',
                 exclude: /node_modules/
-            },{
-                test: /\.css$/,
-                use: [
-                    {
-                        loader: "style-loader"
-                    },{
-                        loader: 'css-loader',
-                        options: {
-                            // modules: true,  // true css模块化 命名空间
-                            modules: false    // false 按原来的样式
-                        }
-                    },{
-                        loader: 'postcss-loader'
-                    }
-                ]
-            },{
+            },
+            // {
+            //     test: /\.css$/,
+            //     use: [
+            //         {
+            //             loader: "style-loader"
+            //         },{
+            //             loader: 'css-loader',
+            //             options: {
+            //                 // modules: true,  // true css模块化 命名空间
+            //                 modules: false    // false 按原来的样式
+            //             }
+            //         },{
+            //             loader: 'postcss-loader'
+            //         }
+            //     ]
+            // },
+            {
                 test: /\.(png|jpe?g|gif|svg)(\?.*)?$/,
                 loader: 'url-loader',
                 options: {

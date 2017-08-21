@@ -4,7 +4,7 @@
         <div class="vue-toast" :class="position" v-bind:style="{ color: color,zIndex: zIndex }">{{msg}}</div>
     </div>   
 </template>
-<style>
+<style lang="scss">
     .vue-toast {
         position: fixed;        
         left: 50%;
